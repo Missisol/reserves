@@ -1,0 +1,247 @@
+:root {
+  --section-gap: 160px;
+  --maxContainer: 1320px;
+  --radius: 0.75rem;
+  
+    /* colors */
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(222 84% 5%);
+
+    --card: var(--background);
+    --card-foreground: var(--foreground);
+
+    --popover: var(--background);
+    --popover-foreground: var(--foreground);
+
+    --primary: hsl(24 88% 62%);
+    --primary-foreground: var(--background);
+
+    --secondary: hsl(142 76% 45%);
+    --secondary-foreground: var(--background);
+
+    --muted: hsl(210 40% 96.1%);
+    --muted-foreground: hsl(215 16% 47%);
+
+    --accent: hsl(210 40% 96%);
+    --accent-foreground: hsl(222 47% 11%);
+
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: var(--background);
+
+    --border: hsl(214 32% 91%);
+    --input: hsl(214 32% 91%);
+    --ring: hsl(24 88% 62%);
+
+    
+    --gradient-primary: linear-gradient(135deg, hsl(24 88% 62%), hsl(18 95% 58%));
+    --gradient-secondary: linear-gradient(135deg, hsl(142 76% 45%), hsl(158 80% 48%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 98%), hsl(0 0% 96%));
+    --gradient-card-from: hsl(0 0% 98%);
+    --gradient-card-to: hsl(0 0% 96%);
+    
+    --shadow-glow: 0 0 30px hsl(24 88% 62% / 0.2);
+    --shadow-card: 0 8px 32px hsl(216 30% 15% / 0.1);
+    --shadow-card-color: hsl(216 30% 15% / 0.1);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* colors dark */
+    --background-dark: hsl(216 15% 7%);
+    --foreground-dark: hsl(210 20% 98%);
+
+    --card-dark: hsl(216 20% 10%);
+    --card-foreground-dark: var(--foreground-dark);
+
+    --popover-dark: hsl(216 25% 12%);
+    --popover-foreground-dark: var(--foreground-dark);
+
+    --primary-dark: hsl(24 88% 62%);
+    --primary-foreground-dark: var(--background-dark);
+
+    --secondary-dark: hsl(142 76% 45%);
+    --secondary-foreground-dark: var(--background-dark);
+
+    --muted-dark: hsl(216 15% 15%);
+    --muted-foreground-dark: hsl(210 12% 65%);
+
+    --accent-dark: hsl(24 88% 62%);
+    --accent-foreground-dark: var(--background-dark);
+
+    --destructive-dark: hsl(0 72% 51%);
+    --destructive-foreground-dark: var(--foreground-dark);
+
+    --border-dark: hsl(216 15% 18%);
+    --input-dark: hsl(216 15% 18%);
+    --ring-dark: hsl(24 88% 62%);
+    
+    --gradient-card-dark: linear-gradient(145deg, hsl(216 20% 12%), hsl(216 18% 14%));
+    --gardient-card-from-dark: hsl(216 20% 12%);
+    --gradient-card-to-dark: hsl(216 18% 14%);
+
+    --shadow-card-dark: 0 8px 32px hsl(216 30% 4% / 0.4);
+    --shadow-card-color-dark: hsl(216 30% 4% / 0.4);
+
+    /* light-dark() */
+    --color-background: light-dark(var(--background), var(--background-dark));
+    --color-foreground: light-dark(var(--foreground), var(--foreground-dark));
+
+    --color-card: light-dark(var(--card), var(--card-dark));
+    --color-card-foreground: light-dark(var(--card-foreground), var(--card-foreground-dark));
+
+    --color-popover: light-dark(var(--popover), var(--popover-dark));
+    --color-popover-foreground: light-dark(var(--popover-foreground), var(--popover-foreground-dark));
+
+    --color-primary: light-dark(var(--primary), var(--primary-dark));
+    --color-primary-foreground: light-dark(var(--primary-foreground), var(--primary-foreground-dark));
+
+    --color-secondary: light-dark(var(--secondary), var(--secondary-dark));
+    --color-secondary-foreground: light-dark(var(--secondary-foreground), var(--secondary-foreground-dark));
+
+    --color-muted: light-dark(var(--muted), var(--muted-dark));
+    --color-muted-foreground: light-dark(var(--muted-foreground), var(--muted-foreground-dark));
+
+    --color-accent: light-dark(var(--accent), var(--accent-dark));
+    --color-accent-foreground: light-dark(var(--accent-foreground), var(--accent-foreground-dark));
+
+    --color-destructive: light-dark(var(--destructive), var(--destructive-dark));
+    --color-destructive-foreground: light-dark(var(--destructive-foreground), var(--destructive-foreground-dark));
+
+    --color-border: light-dark(var(--border), var(--border-dark));
+    --color-input: light-dark(var(--input), var(--input-dark));
+    --color-ring: light-dark(var(--ring), var(--ring-dark));
+
+    --color-gradient-card-from: light-dark(hsl(0 0% 98%), hsl(216 20% 12%));
+    --color-gradient-card-to: light-dark(hsl(0 0% 96%), hsl(216 18% 14%));
+    --color-gradient-card: linear-gradient(145deg, var(--color-gradient-card-from), var(--color-gradient-card-to));
+
+    --color-shadow-card-color: light-dark(var(--shadow-card-color), var(--shadow-card-color-dark));
+    --color-shadow-card: 0 8px 32px var(--color-shadow-card-color);
+
+    interpolate-size: allow-keywords;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color-scheme: dark;
+  min-height: 100vh;
+  color: var(--color-foreground);
+  background: var(--color-background);
+  accent-color: var(--color-accent);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  --full: minmax(1rem, 1fr);
+  --container: minmax(0, var(--maxContainer));
+
+  height: 100vh;
+  display: grid;
+  grid-template-columns: [full-start] var(--full)
+  [container-start] var(--container) [container-end]
+  var(--full) [full-end];
+  grid-template-rows: auto 1fr auto;
+}
+
+.container > * {
+  grid-column: container;
+}
+
+.container > .full {
+  grid-column: full;
+}
+
+.container-inner {
+  --full: minmax(0, 1fr);
+  --inner: minmax(0, var(--maxContainer));
+  
+  display: grid;
+  grid-template-columns: var(--full)
+  [inner-start] var(--inner) [inner-end]
+  var(--full);
+}
+
+.container-inner > * {
+  grid-column: inner;
+}
+
+.common-button--dark {
+  --cbtn-background: var(--color-background);
+  --cbtn-border: var(--color-input);
+  --text-color: var(--color-foreground);
+  --cbtn-hover: var(--color-primary);
+  --text-hover: var(--color-primary-foreground);
+}
+
+.common-button--dark-active {
+  --cbtn-background: var(--color-primary);
+  --text-color: var(--color-primary-foreground);
+}
+
+.common-button--red {
+  --cbtn-background: var(--color-destructive);
+  --cbtn-border: var(--color-input);
+  --text-color: var(--color-destructive-foreground);
+  --cbtn-hover: hsl(from var(--color-destructive) h s l / 0.9);
+  --text-hover: var(--color-foreground);
+}
+
+a.router__link {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.section__title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+}
+
+.form__action .input {
+  --color-outline: var(--outline-color, var(--color-ring));
+  flex-grow: 1;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--color-foreground);
+  background: hsl(from var(--color-background) h s l / 0.5);
+  border: 1px solid var(--color-input);
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.5rem .75rem;
+}
+
+.form__action>input::placeholder {
+  color: hsl(from var(--color-foreground) h s l / 0.6);
+}
+
+.form__button>svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.form__action>.input:focus-visible, 
+.form__action>.input:focus {
+  outline: 2px solid var(--color-outline);
+}
+
+.form__action>.input:focus:not(:focus-visible) {
+  outline: none;
+}
