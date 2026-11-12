@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import CommonHeader from '@/components/common/CommonHeader.vue'
 </script>
 
 <template>
   <div class="container">
+    <CommonHeader />
     <main class="main">
       <RouterView v-slot="{ Component, route }">
         <transition>

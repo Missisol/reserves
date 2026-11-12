@@ -125,7 +125,6 @@ html {
 }
 
 body {
-  color-scheme: dark;
   min-height: 100vh;
   color: var(--color-foreground);
   background: var(--color-background);
