@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router'
 import { useReserveCategoriesStore } from '@/stores/reserveCategories'
 import { useReservesStore } from '@/stores/reserves'
 import { formatDate, formatQuantity, getStatusLabel, getToggleLabel } from '@/utils/reserveHelpers'
+import { reserveTableColumns } from '@/utils/commonData'
 import CommonButton from '@/components/common/CommonButton.vue'
 import IconPlus from '@/components/icons/IconPlus.vue'
 import IconEdit from '@/components/icons/IconEdit.vue'
@@ -14,7 +15,7 @@ import TransitionDropdown from '@/components/transition/TransitionDropdown.vue'
 import ReserveCategoryCreate from '@/components/reserves/ReserveCategoryCreate.vue'
 import ReserveCategoryManage from '@/components/reserves/ReserveCategoryManage.vue'
 import CommonConfirmDialog from '@/components/common/CommonConfirmDialog.vue'
-import type { ReserveCategory, ReserveSortField } from '@/@types/reserve'
+import type { ReserveCategory, ReserveSortField, ReserveTableColumn } from '@/@types/reserve'
 
 const router = useRouter()
 
@@ -133,6 +134,13 @@ function toggleSort(field: ReserveSortField) {
   getReserves()
 }
 
+// Handle sortable column header click
+function onHeaderClick(col: ReserveTableColumn) {
+  if (col.sortable && col.sortField) {
+    toggleSort(col.sortField)
+  }
+}
+
 // Initial load
 getReserveCategories()
 getReserves()
@@ -148,7 +156,6 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <!--TODO отрефакторить таблицу -->
   <div class="parent">
 
     <!-- Filters -->
@@ -230,91 +237,71 @@ onBeforeUnmount(() => {
         <table class="table">
           <thead>
             <tr>
-              <th>Дата записи</th>
               <th
-                class="sortable"
-                @click="toggleSort('category')"
+                v-for="col in reserveTableColumns"
+                :key="col.key"
+                :class="{ sortable: col.sortable }"
+                @click="onHeaderClick(col)"
               >
-                Категория
-                <span v-if="activeSortField === 'category'">{{ activeSortOrder === 'asc' ? ' ↑' : ' ↓' }}</span>
+                {{ col.label }}
+                <span v-if="col.sortable && activeSortField === col.sortField">
+                  {{ activeSortOrder === 'asc' ? ' ↑' : ' ↓' }}
+                </span>
               </th>
-              <th
-                class="sortable"
-                @click="toggleSort('kind')"
-              >
-                Вид
-                <span v-if="activeSortField === 'kind'">{{ activeSortOrder === 'asc' ? ' ↑' : ' ↓' }}</span>
-              </th>
-              <th>Описание</th>
-              <th
-                class="sortable"
-                @click="toggleSort('quantity')"
-              >
-                Количество
-                <span v-if="activeSortField === 'quantity'">{{ activeSortOrder === 'asc' ? ' ↑' : ' ↓' }}</span>
-              </th>
-              <th>Годен до</th>
-              <th
-                class="sortable"
-                @click="toggleSort('location')"
-              >
-                Локация
-                <span v-if="activeSortField === 'location'">{{ activeSortOrder === 'asc' ? ' ↑' : ' ↓' }}</span>
-              </th>
-              <th
-                class="sortable"
-                @click="toggleSort('place')"
-              >
-                Место
-                <span v-if="activeSortField === 'place'">{{ activeSortOrder === 'asc' ? ' ↑' : ' ↓' }}</span>
-              </th>
-              <th>Статус</th>
-              <th>Действия</th>
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="item in reserves"
-              :key="item.id"
-            >
-              <td>{{ formatDate(item.created_at.slice(0, 10)) }}</td>
-              <td>{{ item.category_name || '—' }}</td>
-              <td>{{ item.kind }}</td>
-              <td>{{ item.description || '—' }}</td>
-              <td>{{ formatQuantity(item) }}</td>
-              <td>{{ formatDate(item.expiry_date) }}</td>
-              <td>{{ item.location || '—' }}</td>
-              <td>{{ item.place || '—' }}</td>
-              <td>
-                <span
-                  class="status-badge"
-                  :class="{ 'status-badge--inactive': !item.is_active }"
-                >{{ getStatusLabel(item.is_active) }}</span>
-              </td>
-              <td>
-                <div class="actions">
-                  <RouterLink
-                    :to="`/reserves/${item.id}/edit`"
-                    class="action-btn"
-                    title="Редактировать"
-                  >
-                    <IconEdit />
-                  </RouterLink>
-                  <button
-                    class="action-btn action-btn--text"
-                    :title="item.is_active ? 'Использовано' : 'Вернуть'"
-                    @click="toggleReserveStatus(item.id)"
-                  >
-                    {{ getToggleLabel(item.is_active) }}
-                  </button>
-                  <button
-                    class="action-btn action-btn--danger"
-                    title="Удалить"
-                    @click="openDeleteDialog(item.id)"
-                  >
-                    <IconDelete />
-                  </button>
-                </div>
+            <tr v-for="item in reserves" :key="item.id">
+              <td v-for="col in reserveTableColumns" :key="col.key">
+                <!-- datetime: ISO datetime → date part only -->
+                <template v-if="col.cellType === 'datetime'">
+                  {{ formatDate(String((item as Record<string, unknown>)[col.key] ?? '').slice(0, 10)) }}
+                </template>
+                <!-- date (expiry_date) -->
+                <template v-else-if="col.cellType === 'date'">
+                  {{ formatDate((item as Record<string, unknown>)[col.key] as string | null | undefined) }}
+                </template>
+                <!-- quantity -->
+                <template v-else-if="col.cellType === 'quantity'">
+                  {{ formatQuantity(item) }}
+                </template>
+                <!-- status -->
+                <template v-else-if="col.cellType === 'status'">
+                  <span
+                    class="status-badge"
+                    :class="{ 'status-badge--inactive': !item.is_active }"
+                  >{{ getStatusLabel(item.is_active) }}</span>
+                </template>
+                <!-- actions -->
+                <template v-else-if="col.cellType === 'actions'">
+                  <div class="actions">
+                    <RouterLink
+                      :to="`/reserves/${item.id}/edit`"
+                      class="action-btn"
+                      title="Редактировать"
+                    >
+                      <IconEdit />
+                    </RouterLink>
+                    <button
+                      class="action-btn action-btn--text"
+                      :title="item.is_active ? 'Использовано' : 'Вернуть'"
+                      @click="toggleReserveStatus(item.id)"
+                    >
+                      {{ getToggleLabel(item.is_active) }}
+                    </button>
+                    <button
+                      class="action-btn action-btn--danger"
+                      title="Удалить"
+                      @click="openDeleteDialog(item.id)"
+                    >
+                      <IconDelete />
+                    </button>
+                  </div>
+                </template>
+                <!-- text (default) -->
+                <template v-else>
+                  {{ (item as Record<string, unknown>)[col.key] || '—' }}
+                </template>
               </td>
             </tr>
           </tbody>

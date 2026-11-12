@@ -25,6 +25,16 @@ export type ReserveSortField = 'kind' | 'quantity' | 'category' | 'location' | '
 
 export type SortOrder = 'asc' | 'desc'
 
+export type ReserveCellType = 'datetime' | 'date' | 'text' | 'quantity' | 'status' | 'actions'
+
+export interface ReserveTableColumn {
+  key: string
+  label: string
+  sortable: boolean
+  sortField?: ReserveSortField
+  cellType: ReserveCellType
+}
+
 export interface ReservePagination {
   page: number
   per_page: number
