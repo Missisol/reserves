@@ -75,7 +75,7 @@ async function update() {
   }
   const result = await updateReserve(id, body)
   if (result?.id) {
-    router.push({ path: '/reserves' })
+    router.push({ path: '/' })
   }
 }
 
@@ -102,7 +102,7 @@ watch(
 
 <template>
   <ReserveLayout
-    @action="router.push({ path: '/reserves' })"
+    @action="router.push({ path: '/' })"
     text="Назад к запасам"
   >
     <template #content>
