@@ -13,10 +13,9 @@ const router = createRouter({
   routes,
 })
 
-// router.beforeEach((to, _from, next) => {
-//   if (to.name) setDocumentTitle(to.name)
-//   else next()
-// })
+router.beforeEach((to) => {
+  setDocumentTitle(to.name) 
+})
 
 createApp(App)
 .use(pinia)
