@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, useTemplateRef, watchEffect, } from 'vue'
+import { ref, onMounted, onBeforeUnmount, useTemplateRef } from 'vue'
 import type { Component } from 'vue'
-import { useRoute } from 'vue-router'
 
 import IconSun from '../icons/IconSun.vue'
 import IconMoon from '../icons/IconMoon.vue'
 import IconSystem from '../icons/IconSystem.vue'
 import IconSprout from '../icons/IconSprout.vue'
 import { themes } from '@/utils/commonData'
-import type { ThemeValue, LogoVariant } from '@/@types/common'
+import type { ThemeValue } from '@/@types/common'
 
-const route = useRoute()
 const isMenuOpen = ref<boolean>(false)
 const theme = ref<ThemeValue>('light dark')
 const switcherRef = useTemplateRef<HTMLElement>('switcher')
-const activeColor = ref<LogoVariant>('primary')
 
 const iconComponent: Record<ThemeValue, Component> = {
   light: IconSun,
@@ -90,7 +87,7 @@ onBeforeUnmount(() => {
             ref="switcher"
           >
             <button
-              :class="['header__theme', `header__theme--${activeColor}`]"
+              class="header__theme"
               @click="toggleMenu"
               :aria-label="theme"
               aria-haspopup="menu"
@@ -108,7 +105,7 @@ onBeforeUnmount(() => {
                   v-for="item in themes"
                   :key="item.name"
                   class="theme-menu__item"
-                  :class="[{ active: theme === item.value }, `theme-menu__item--${activeColor}`]"
+                  :class="[{ active: theme === item.value }]"
                   @click="setTheme(item.value)"
                   role="menuitem"
                 >
@@ -151,12 +148,6 @@ onBeforeUnmount(() => {
   text-decoration: none;
 }
 
-/* @media (hover: hover) and (pointer: fine) {
-  .logo__container:hover .logo {
-    transform: scaleX(1.1) scaleY(1.1)
-  }
-}
- */
 .logo {
   display: flex;
   gap: .5rem;
@@ -170,7 +161,7 @@ onBeforeUnmount(() => {
   transition: var(--transition-smooth);
   box-shadow: var(--shadow-glow);
   color: var(--color-background);
-  background: var(--gradient-secondary);
+  background: var(--gradient-primary);
 }
 
 .logo>svg {
@@ -186,7 +177,7 @@ onBeforeUnmount(() => {
   text-wrap: nowrap;
   color: transparent;
   background-clip: text;
-  background-image: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+  background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
 
   @media (width < 768px) {
     display: none;
@@ -227,8 +218,8 @@ onBeforeUnmount(() => {
   }
 
   & a.router-link-exact-active:last-child {
-    color: var(--color-secondary);
-    background-color: hsl(from var(--color-secondary) h s l / 0.1);
+    color: var(--color-primary);
+    background-color: hsl(from var(--color-primary) h s l / 0.1);
   }
 }
 
@@ -249,14 +240,7 @@ onBeforeUnmount(() => {
 
 .header__theme:hover {
   color: var(--accent-foreground);
-}
-
-.header__theme--primary:hover {
   background: var(--color-primary);
-}
-
-.header__theme--secondary:hover {
-  background: var(--color-secondary);
 }
 
 .header__theme>svg {
@@ -273,8 +257,8 @@ onBeforeUnmount(() => {
   right: 0;
   margin-top: .5rem;
   min-width: max-content;
-  background: var(--color-popover);
-  color: var(--color-popover-foreground);
+  background: var(--color-background);
+  color: var(--color-foreground);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -298,15 +282,7 @@ onBeforeUnmount(() => {
 .theme-menu__item.active {
   /* background:var(--color-accent); */
   color: var(--color-accent-foreground);
-}
-
-.theme-menu__item--primary:hover ,
-.theme-menu__item--primary.active {
   background:var(--color-primary);
-}
-.theme-menu__item--secondary:hover ,
-.theme-menu__item--secondary.active {
-  background:var(--color-secondary);
 }
 
 .theme-menu__item > svg {
