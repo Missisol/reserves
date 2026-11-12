@@ -165,7 +165,7 @@ function clearInput() {
   --btn-padding-block: var(--btn-padding);
   --btn-padding-inline: var(--btn-padding);
 
-  color: var(--color-card-foreground);
+  color: var(--color-foreground);
   background: var(--color-gradient-card);
   border: 1px solid hsl(from var(--color-border) h s l / 0.5);
   border-radius: var(--radius);
@@ -204,7 +204,7 @@ function clearInput() {
 }
 
 .input {
-  --option-color: var(--color-secondary);
+  --option-color: var(--color-primary);
   grid-column: 1 / 3;
   grid-row: 1 / 2;
 }
@@ -239,8 +239,8 @@ function clearInput() {
 }
 
 .form__button--update {
-  --cbtn-background: var(--color-secondary);
-  --cbtn-border: var(--color-secondary);
+  --cbtn-background: var(--color-primary);
+  --cbtn-border: var(--color-primary);
   --text-color: var(--color-primary-foreground);
 }
 </style>

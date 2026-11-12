@@ -62,7 +62,7 @@ async function saveCategory(e: SubmitEvent) {
 
 <style scoped>
 .wrapper {
-  --btn-color: var(--color-secondary);
+  --btn-color: var(--color-primary);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -75,6 +75,6 @@ async function saveCategory(e: SubmitEvent) {
 }
 
 .form__action .input {
-  --outline-color: var(--color-secondary);
+  --outline-color: var(--color-primary);
 }
 </style>

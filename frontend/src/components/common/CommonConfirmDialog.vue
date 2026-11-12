@@ -91,7 +91,7 @@ function handleBackdropClick(e: Event): void {
   box-shadow: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.06);
   max-width: 28rem;
   width: 100%;
-  color: var(--color-card-foreground);
+  color: var(--color-foreground);
 }
 
 .dialog__header {

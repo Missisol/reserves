@@ -393,10 +393,10 @@ onBeforeUnmount(() => {
 .parent {
   --gradient: var(--gradient-secondary);
   --dim: left;
-  --cbtn-background: var(--color-secondary);
-  --cbtn-border: var(--color-secondary);
-  --dropdown-color: var(--color-secondary);
-  --label-color: var(--color-secondary);
+  --cbtn-background: var(--color-primary);
+  --cbtn-border: var(--color-primary);
+  --dropdown-color: var(--color-primary);
+  --label-color: var(--color-primary);
 
   display: flex;
   flex-direction: column;
@@ -455,8 +455,8 @@ onBeforeUnmount(() => {
 
 .filter-btn--active {
   color: var(--color-primary-foreground);
-  background: var(--color-secondary);
-  border-color: var(--color-secondary);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .filter-btn:hover:not(.filter-btn--active) {
@@ -466,7 +466,7 @@ onBeforeUnmount(() => {
 .category-dropdown {
   position: absolute;
   z-index: 20;
-  background: var(--color-popover);
+  background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
@@ -510,7 +510,7 @@ onBeforeUnmount(() => {
 .table th {
   background: hsl(from var(--color-muted) h s l / 0.3);
   font-weight: 600;
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .sortable {
@@ -528,7 +528,7 @@ onBeforeUnmount(() => {
   border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 600;
-  background: var(--color-secondary);
+  background: var(--color-primary);
   color: var(--color-primary-foreground);
 }
 
@@ -555,7 +555,7 @@ onBeforeUnmount(() => {
 }
 
 .action-btn:hover {
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .action-btn--text {
@@ -636,7 +636,7 @@ onBeforeUnmount(() => {
 }
 
 .pagination__page--active {
-  color: var(--color-secondary);
+  color: var(--color-primary);
   font-weight: 700;
   pointer-events: none;
 }

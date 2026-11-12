@@ -40,7 +40,7 @@ const emit = defineEmits<{
   --icon-color: var(--color-primary-foreground);
   /* --label-color: var(--color-primary); */
 
-  color: var(--color-card-foreground);
+  color: var(--color-foreground);
   background: var(--color-gradient-card);
   border: 1px solid hsl(from var(--color-border) h s l / 0.5);
   border-radius: var(--radius);

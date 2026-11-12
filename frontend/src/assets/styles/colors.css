@@ -1,0 +1,113 @@
+:root {
+  /* --green-1: hsl(140, 21%, 8%); #111A14 */
+  /* --green-2: hsl(0, 0%, 0%); #010101 */
+  /* --green-3: hsl(151, 49%, 44%); #39A872 */
+  /* --white-1: hsl(0, 0%, 95%); #F3F3F3 */
+  /* --black-1: hsl(138, 25%, 14%); #1A2B1F */
+
+  /* light-dark */
+  /* --color-background: light-dark(var(--white-1), var(--green-1));
+  --color-text: light-dark(var(--green-1), var(--white-1));
+  --color-accent: light-dark(var(--green-3), var(--green-3)); */
+
+  /* colors */
+    --white-1: hsl(0, 0%, 100%);
+    --white-2: hsl(210 40% 96%);
+    --white-3: hsl(214 32% 91%);
+    --white-4: hsl(210 20% 96%);
+    --white-5: hsl(210 12% 65%);
+
+    --dark-1: hsl(222 84% 5%);
+    --dark-2: hsl(222 47% 11%);
+    --dark-3: hsl(215 16% 47%);
+    --dark-4: hsl(216 15% 7%); /* background */
+    --dark-5: hsl(216 20% 10%); /* card */
+    --dark-6: hsl(216 15% 18%);
+
+
+    --green-1: hsl(142 76% 45%);
+    --green-2: hsl(158 80% 48%);
+
+    --orange-1: hsl(24 88% 62%);
+    --orange-2: hsl(18 95% 58%);
+
+    --red-1: hsl(0 84% 60%);
+    --red-2: hsl(0 72% 51%);
+
+    --gradient-primary: linear-gradient(135deg, var(--green-1), var(--green-2));
+    --gradient-secondary: linear-gradient(135deg, var(--orange-1), var(--orange-2));
+    
+
+  /* colors light */
+    --background: var(--white-1);
+    --foreground: var(--dark-1);
+
+    --primary: var(--green-1);
+    --primary-foreground: var(--white-1);
+
+    --secondary: var(--orange-1);
+    --secondary-foreground: var(--white-1);
+    
+    --muted: var(--white-2);
+    --muted-foreground: var(--dark-3);
+
+    --accent: var(--white-2);
+    --accent-foreground: var(--dark-2);
+
+    --destructive: var(--red-1);
+    --destructive-foreground: var(--white-1);
+
+    --border: var(--white-3);
+    --input: var(--white-3);
+    --outline: var(--orange-1);
+
+
+    /* colors dark */
+    --background-dark: var(--dark-4);
+    --foreground-dark: var(--white-4);
+
+    --primary-dark: var(--green-1);
+    --primary-foreground-dark: var(--dark-4);
+
+    --secondary-dark: var(--orange-1);
+    --secondary-foreground-dark: var(--dark-4);
+
+    --muted-dark: var(--dark-6);
+    --muted-foreground-dark: var(--white-5);
+
+    --accent-dark: var(--green-1);
+    --accent-foreground-dark: var(--dark-4);
+
+    --destructive-dark: var(--red-2);
+    --destructive-foreground-dark: var(--white-4);
+
+    --border-dark: var(--dark-6);
+    --input-dark: var(--dark-6);
+    --outline-dark: var(--orange-1);
+    
+    /* light-dark() */
+    --color-background: light-dark(var(--background), var(--background-dark));
+    --color-foreground: light-dark(var(--foreground), var(--foreground-dark));
+
+    --color-primary: light-dark(var(--primary), var(--primary-dark));
+    --color-primary-foreground: light-dark(var(--primary-foreground), var(--primary-foreground-dark));
+
+    --color-secondary: light-dark(var(--secondary), var(--secondary-dark));
+    --color-secondary-foreground: light-dark(var(--secondary-foreground), var(--secondary-foreground-dark));
+
+    --color-muted: light-dark(var(--muted), var(--muted-dark));
+    --color-muted-foreground: light-dark(var(--muted-foreground), var(--muted-foreground-dark));
+
+    --color-accent: light-dark(var(--accent), var(--accent-dark));
+    --color-accent-foreground: light-dark(var(--accent-foreground), var(--accent-foreground-dark));
+
+    --color-destructive: light-dark(var(--destructive), var(--destructive-dark));
+    --color-destructive-foreground: light-dark(var(--destructive-foreground), var(--destructive-foreground-dark));
+
+    --color-border: light-dark(var(--border), var(--border-dark));
+    --color-input: light-dark(var(--input), var(--input-dark));
+    --color-outline: light-dark(var(--outline), var(--outline-dark));
+
+    interpolate-size: allow-keywords;
+}
+
