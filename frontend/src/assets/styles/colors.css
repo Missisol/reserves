@@ -5,11 +5,6 @@
   /* --white-1: hsl(0, 0%, 95%); #F3F3F3 */
   /* --black-1: hsl(138, 25%, 14%); #1A2B1F */
 
-  /* light-dark */
-  /* --color-background: light-dark(var(--white-1), var(--green-1));
-  --color-text: light-dark(var(--green-1), var(--white-1));
-  --color-accent: light-dark(var(--green-3), var(--green-3)); */
-
   /* colors */
     --white-1: hsl(0, 0%, 100%);
     --white-2: hsl(210 40% 96%);
@@ -20,10 +15,9 @@
     --dark-1: hsl(222 84% 5%);
     --dark-2: hsl(222 47% 11%);
     --dark-3: hsl(215 16% 47%);
-    --dark-4: hsl(216 15% 7%); /* background */
-    --dark-5: hsl(216 20% 10%); /* card */
+    --dark-4: hsl(216 15% 7%); 
+    --dark-5: hsl(216 20% 10%);
     --dark-6: hsl(216 15% 18%);
-
 
     --green-1: hsl(142 76% 45%);
     --green-2: hsl(158 80% 48%);
@@ -107,7 +101,5 @@
     --color-border: light-dark(var(--border), var(--border-dark));
     --color-input: light-dark(var(--input), var(--input-dark));
     --color-outline: light-dark(var(--outline), var(--outline-dark));
-
-    interpolate-size: allow-keywords;
 }
 

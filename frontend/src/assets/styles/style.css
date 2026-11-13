@@ -14,6 +14,8 @@
   --size-7: calc(var(--size) * 7); /* 28px */
   --size-8: calc(var(--size) * 8); /* 32px */
   --size-10: calc(var(--size) * 10); /* 40px */
+
+  interpolate-size: allow-keywords;
 }
 
 html {
