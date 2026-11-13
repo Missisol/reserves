@@ -10,3 +10,8 @@ wheels/
 .venv
 
 .env
+.env.*
+
+app.db
+
+logs/
