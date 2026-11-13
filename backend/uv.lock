@@ -25,6 +25,7 @@ dependencies = [
     { name = "flask-cors" },
     { name = "flask-migrate" },
     { name = "flask-sqlalchemy" },
+    { name = "gunicorn" },
     { name = "python-dotenv" },
 ]
 
@@ -34,6 +35,7 @@ requires-dist = [
     { name = "flask-cors", specifier = ">=6.0.5" },
     { name = "flask-migrate", specifier = ">=4.1.0" },
     { name = "flask-sqlalchemy", specifier = ">=3.1.1" },
+    { name = "gunicorn", specifier = ">=23.0.0" },
     { name = "python-dotenv", specifier = ">=1.2.4" },
 ]
 
@@ -110,6 +112,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/91/53/b0a9fcc1b1297f51e68b69ed3b7c3c40d8c45be1391d77ae198712914392/flask_sqlalchemy-3.1.1.tar.gz", hash = "sha256:e4b68bb881802dda1a7d878b2fc84c06d1ee57fb40b874d3dc97dabfa36b8312", size = 81899, upload-time = "2023-09-11T21:42:36.147Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1d/6a/89963a5c6ecf166e8be29e0d1bf6806051ee8fe6c82e232842e3aeac9204/flask_sqlalchemy-3.1.1-py3-none-any.whl", hash = "sha256:4ba4be7f419dc72f4efd8802d69974803c37259dd42f3913b0dcf75c9447e0a0", size = 25125, upload-time = "2023-09-11T21:42:34.514Z" },
+]
+
+[[package]]
+name = "gunicorn"
+version = "27.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0a/b3/addb4f148b938633977d983b852c82177b6c92d17837102a9a2aca061905/gunicorn-27.0.0.tar.gz", hash = "sha256:88d52e7c60b3af07bc8db431fbb450a94780f2cbe7c420c7cf1891392661c591", size = 932048, upload-time = "2026-11-10T11:20:59.207Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/85/2b/367de7fc2fd4cfd1814b0a31da023195eb4037c1fddc4d9e11cc965e1c00/gunicorn-27.0.0-py3-none-any.whl", hash = "sha256:1380f2f520abc3beb9e72cd2e728bd2d08a19b3ff6ac03ebd8da71d1798a4008", size = 261789, upload-time = "2026-11-10T11:20:57.621Z" },
 ]
 
 [[package]]
