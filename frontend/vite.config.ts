@@ -2,31 +2,19 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import { Features } from 'lightningcss'
 
-// Plugin to dynamically set favicon based on environment variable
+// Plugin to dynamically set favicon based on environment variable.
+// VITE_APP_FAVICON_PATH is read at config load time from process.env.
+// This is required because Vite plugins execute during config evaluation,
+// not during the client build, so the "define" approach won't work here.
+const faviconPath = process.env.VITE_APP_FAVICON_PATH || '/favicon.svg'
+const faviconIcoPath = faviconPath.replace('.svg', '.ico')
+
 function faviconPlugin() {
   return {
     name: 'favicon-plugin',
-    transformIndexHtml(
-      html: string,
-      ctx: {
-        path: string
-        filename: string
-        mode: string
-        server?: unknown
-        bundle?: unknown
-        chunk?: unknown
-      }
-    ) {
-      const { mode } = ctx
-      // eslint-disable-next-line no-undef
-      const env = loadEnv(mode, process.cwd(), '')
-      const faviconPath = env.VITE_APP_FAVICON_PATH || '/favicon.svg'
-      
-      // Determine .ico path based on .svg path
-      const faviconIcoPath = faviconPath.replace('.svg', '.ico')
-      
-      // Replace favicon links in HTML
+    transformIndexHtml(html: string) {
       return html
         .replace(/href="\/favicon\.svg"/g, `href="${faviconPath}"`)
         .replace(/href="\/favicon\.ico"/g, `href="${faviconIcoPath}"`)
@@ -70,6 +58,7 @@ export default defineConfig(({ mode }) => {
       assetsDir: 'assets',
       sourcemap: false,
       minify: 'terser',
+      cssMinify: 'lightningcss',
       terserOptions: {
         compress: {
           drop_console: true,
@@ -77,7 +66,13 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-        resolve: {
+    css: {
+      transformer: 'lightningcss',
+      lightningcss: {
+        exclude: Features.LightDark, // https://lightningcss.dev/transpilation.html
+      },
+    },
+    resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       },

@@ -1,0 +1,42 @@
+name: reserves-dev
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    # env_file:
+    #   - ./.env.dev
+    volumes:
+      - ./backend:/app
+      - ./backend/logs:/app/logs
+      - ${DB_PATH}:${DB_PATH}
+    expose:
+      - "5000"
+    networks:
+      - app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend:/app
+      - frontend-modules:/app/node_modules
+    env_file:
+      - ./.env.dev
+    ports:
+      - "5174:5174"
+    expose:
+      - "5174"
+    depends_on:
+      - backend
+    networks:
+      - app
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  frontend-modules:
