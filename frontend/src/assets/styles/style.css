@@ -15,6 +15,14 @@
   --size-8: calc(var(--size) * 8); /* 32px */
   --size-10: calc(var(--size) * 10); /* 40px */
 
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+  --font-size-32: 2rem;
+
   interpolate-size: allow-keywords;
 }
 
@@ -30,22 +38,22 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: var(--size-8);
+  font-size: var(--font-size-32);
 }
 
 h2 {
-  font-size: var(--size-6);
+  font-size: var(--font-size-24);
 }
 
 h3 {
-  font-size: var(--size-5);
+  font-size: var(--font-size-20);
 }
 
 body {
   color: var(--color-foreground);
   background: var(--color-background);
   font-family: var(--font-text);
-  font-size: 14px;
+  font-size: var(--font-size-14);
   font-optical-sizing: auto;
   font-weight: 400;
   font-synthesis: weight;
@@ -124,7 +132,7 @@ a.router__link {
 .form__action .input {
   --color-outline: var(--outline-color, var(--color-ring));
   flex-grow: 1;
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   line-height: 1.25rem;
   color: var(--color-foreground);
   background: hsl(from var(--color-background) h s l / 0.5);

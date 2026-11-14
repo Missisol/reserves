@@ -173,7 +173,7 @@ function clearInput() {
 }
 
 .form__label {
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   line-height: 1.25rem;
   font-weight: 600;
   color: var(--label-color, var(--color-primary));
@@ -248,7 +248,7 @@ function clearInput() {
 <!-- <style>
 .form__action .input {
   flex-grow: 1;
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   line-height: 1.25rem;
   color: var(--color-foreground);
   background: hsl(from var(--color-background) h s l / 0.5);

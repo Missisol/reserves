@@ -69,7 +69,7 @@ async function saveCategory(e: SubmitEvent) {
 }
 
 .error {
-  font-size: 0.75rem;
+  font-size: var(--font-size-12);
   line-height: 1rem;
   color: var(--color-destructive);
 }

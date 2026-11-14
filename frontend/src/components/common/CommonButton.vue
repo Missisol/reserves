@@ -31,7 +31,7 @@ const emit = defineEmits(['buttonAction'])
   justify-content: center;
   align-items: center;
   gap: .5rem;
-  font-size: .875rem;
+  font-size: var(--font-size-14);
   line-height: 1.5rem;
   font-weight: 500;
   white-space: nowrap;

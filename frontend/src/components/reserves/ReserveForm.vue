@@ -221,7 +221,7 @@ const router = useRouter()
 
 .label {
   color: var(--color-primary);
-  font-size: 1rem;
+  font-size: var(--font-size-16);
   line-height: 1.5rem;
   font-weight: 600;
   display: flex;
@@ -236,7 +236,7 @@ const router = useRouter()
 .label input,
 .label textarea,
 .label select {
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   line-height: 1.25rem;
   font-weight: 400;
   color: var(--color-foreground);
@@ -252,7 +252,7 @@ const router = useRouter()
 }
 
 .label__error {
-  font-size: 0.75rem;
+  font-size: var(--font-size-12);
   line-height: 1rem;
   font-weight: 400;
   color: var(--color-destructive);
@@ -261,7 +261,7 @@ const router = useRouter()
 .value--readonly {
   color: var(--color-foreground);
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
 }
 
 .checkbox {
@@ -269,7 +269,7 @@ const router = useRouter()
   align-items: center;
   gap: 0.5rem;
   color: var(--color-foreground);
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   cursor: pointer;
 }
 

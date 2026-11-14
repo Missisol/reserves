@@ -40,21 +40,28 @@ const visiblePages = computed(() => {
 
 <template>
   <div class="pagination">
-    <div class="pagination__rows-per-page">
-      <label for="rows-per-page" class="pagination__label">Показывать:</label>
-    <select
-      v-model="model"
-      name="category"
-      id="rows-per-page"
-      class="category-select"
-    >
-      <option 
-        v-for="opt in optionsData" 
-        :key="opt" 
-        :value="opt"
-      >{{ opt }}</option>
-    </select>
-      <span class="pagination__label">записей</span>
+    <div class="pagination__controls">
+      <div class="pagination__rows-per-page">
+        <label for="rows-per-page" class="pagination__label">Показывать:</label>
+      <select
+        v-model="model"
+        name="category"
+        id="rows-per-page"
+        class="category-select"
+      >
+        <option 
+          v-for="opt in optionsData" 
+          :key="opt" 
+          :value="opt"
+        >{{ opt }}</option>
+      </select>
+        <span class="pagination__label">записей</span>
+      </div>
+
+
+      <div class="pagination__total">
+        Всего: {{ pagination.total }}
+      </div>
     </div>
 
     <nav class="pagination__pages" aria-label="Навигация по страницам">
@@ -87,19 +94,22 @@ const visiblePages = computed(() => {
       </button>
     </nav>
 
-    <div class="pagination__total">
-      Всего: {{ pagination.total }}
-    </div>
   </div>
 </template>
 
 <style scoped>
 .pagination {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--size-2);
+}
+
+.pagination__controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .pagination__rows-per-page {
@@ -109,7 +119,7 @@ const visiblePages = computed(() => {
 }
 
 .pagination__label {
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   color: var(--color-muted-foreground);
 }
 
@@ -119,7 +129,7 @@ const visiblePages = computed(() => {
   border-radius: var(--radius);
   background: var(--color-background);
   color: inherit;
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   cursor: pointer;
 }
 
@@ -139,7 +149,7 @@ const visiblePages = computed(() => {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: .875rem;
+  font-size: var(--font-size-14);
   line-height: 1.5rem;
   font-weight: 500;
   white-space: nowrap;
@@ -148,7 +158,7 @@ const visiblePages = computed(() => {
 
 .pagination__btn--text {
   border: none;
-  font-size: 1.5rem;
+  font-size: var(--font-size-24);
 }
 
 .pagination__page--active {
@@ -170,8 +180,9 @@ const visiblePages = computed(() => {
 }
 
 .pagination__total {
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   color: var(--color-muted-foreground);
+  align-self: center;
 }
 
 </style>

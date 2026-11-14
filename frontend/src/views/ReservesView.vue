@@ -397,7 +397,7 @@ onBeforeUnmount(() => {
   border: 1px solid var(--color-input);
   border-radius: 24px;
   padding: 4px 14px;
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -427,7 +427,7 @@ onBeforeUnmount(() => {
 .category-dropdown__item {
   padding: 0.5rem 1rem;
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
 }
 
 .category-dropdown__item--active {
@@ -454,7 +454,7 @@ onBeforeUnmount(() => {
   padding: 0.5rem 1rem;
   text-align: left;
   border: 1px solid var(--color-border);
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
 }
 
 .table th {
@@ -476,7 +476,7 @@ onBeforeUnmount(() => {
   display: inline-block;
   padding: 2px 10px;
   border-radius: 12px;
-  font-size: 0.75rem;
+  font-size: var(--font-size-12);
   font-weight: 600;
   background: var(--color-primary);
   color: var(--color-primary-foreground);
@@ -510,7 +510,7 @@ onBeforeUnmount(() => {
 }
 
 .action-btn--text {
-  font-size: 0.75rem;
+  font-size: var(--font-size-12);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -528,7 +528,7 @@ onBeforeUnmount(() => {
   text-align: center;
   color: var(--color-muted-foreground);
   padding: 3rem;
-  font-size: 1rem;
+  font-size: var(--font-size-16);
 }
 
 .empty__link {

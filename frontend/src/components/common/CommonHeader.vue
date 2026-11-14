@@ -123,7 +123,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .full-header {
-  position: sticky;
+  /* position: sticky; */
   top: 0px;
   backdrop-filter: blur(4px);
   border-bottom: 1px solid var(--color-border);
@@ -172,7 +172,7 @@ onBeforeUnmount(() => {
 
 .logo__text {
   align-self: center;
-  font-size: 1.25rem;
+  font-size: var(--font-size-20);
   font-weight: 700;
   text-wrap: nowrap;
   color: transparent;
@@ -229,7 +229,7 @@ onBeforeUnmount(() => {
   align-items: center;
   width: 2.5rem;
   height: 100%;
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   font-weight: 500;
   background: var(--color-background);
   border: 1px solid var(--color-input);
@@ -263,7 +263,7 @@ onBeforeUnmount(() => {
   border-radius: var(--radius);
   overflow: hidden;
   z-index: 20;
-  font-size: 0.875rem;
+  font-size: var(--font-size-14);
   line-height: 1.25rem;
 }
 
