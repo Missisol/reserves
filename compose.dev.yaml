@@ -5,8 +5,6 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
-    # env_file:
-    #   - ./.env.dev
     volumes:
       - ./backend:/app
       - ./backend/logs:/app/logs
@@ -20,6 +18,20 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.dev
+    develop:
+      watch:
+      - action: sync
+        path: ./frontend
+        target: /app
+        initial_sync: true
+        ignore:
+          - node_modules/
+          - package.json
+          - pnpm-lock.yaml
+      - action: rebuild
+        path: ./frontend/package.json
+      - action: rebuild
+        path: ./frontend/pnpm-lock.yaml
     volumes:
       - ./frontend:/app
       - frontend-modules:/app/node_modules
