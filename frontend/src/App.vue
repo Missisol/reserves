@@ -20,7 +20,7 @@ import CommonHeader from '@/components/common/CommonHeader.vue'
 
 <style scoped>
 .main {
-  padding-block: 2rem;
+  padding-block: var(--size-2);
 
   @media (width < 768px) {
     padding-block: 1rem;

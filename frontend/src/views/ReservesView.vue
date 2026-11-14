@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 
@@ -15,6 +15,7 @@ import TransitionDropdown from '@/components/transition/TransitionDropdown.vue'
 import ReserveCategoryCreate from '@/components/reserves/ReserveCategoryCreate.vue'
 import ReserveCategoryManage from '@/components/reserves/ReserveCategoryManage.vue'
 import CommonConfirmDialog from '@/components/common/CommonConfirmDialog.vue'
+import CommonPagination from '@/components/common/CommonPagination.vue'
 import type { ReserveCategory, ReserveSortField, ReserveTableColumn } from '@/@types/reserve'
 
 const router = useRouter()
@@ -31,12 +32,15 @@ const reservesStore = useReservesStore()
 const { reserves, filters, pagination, isLoading, error } = storeToRefs(reservesStore)
 const { getReserves, toggleReserveStatus, deleteReserveById, setPage, setPerPage } = reservesStore
 
+
+const quantityPerPage = ref<number>(filters.value.per_page)
+
 // Category filter dropdown
 const isOpenCategoryFilter = ref(false)
 const isOpenCategoryManage = ref(false)
 
 // Rows-per-page selector
-const perPageOptions = [5, 10, 20, 50] as const
+const perPageOptions = [1, 5, 10, 20, 50] as const
 
 // Page numbers to render in the pager (windowed around the current page)
 const visiblePages = computed(() => {
@@ -44,7 +48,7 @@ const visiblePages = computed(() => {
   const current = pagination.value.page
   if (total <= 0) return [] as (number | '…')[]
 
-  const delta = 2
+  const delta = 1
   const pages = new Set<number>()
   for (let i = Math.max(1, current - delta); i <= Math.min(total, current + delta); i++) {
     pages.add(i)
@@ -140,6 +144,10 @@ function onHeaderClick(col: ReserveTableColumn) {
     toggleSort(col.sortField)
   }
 }
+
+watch(quantityPerPage, (newModel: number, _oldModel: number | undefined) => {
+  setPerPage(newModel)
+})
 
 // Initial load
 getReserveCategories()
@@ -308,60 +316,15 @@ onBeforeUnmount(() => {
         </table>
       </div>
 
+
       <!-- Pagination -->
-      <div class="pagination">
-        <div class="pagination__rows-per-page">
-          <label for="rows-per-page" class="pagination__label">Показывать:</label>
-          <select
-            id="rows-per-page"
-            :value="filters.per_page"
-            @change="setPerPage(Number(($event.target as HTMLSelectElement).value))"
-          >
-            <option
-              v-for="opt in perPageOptions"
-              :key="opt"
-              :value="opt"
-            >{{ opt }}</option>
-          </select>
-          <span class="pagination__label">записей</span>
-        </div>
+      <CommonPagination
+        :optionsData="perPageOptions"
+        :pagination="pagination"
+        :filters="filters"
+        @setPage="setPage"
+        v-model:model="quantityPerPage" />
 
-        <nav class="pagination__pages" aria-label="Навигация по страницам">
-          <button
-            class="action-btn action-btn--text"
-            :disabled="!pagination.has_prev"
-            @click="setPage(pagination.page - 1)"
-            title="Предыдущая страница"
-          >
-            ‹
-          </button>
-
-          <template v-for="(page, idx) in visiblePages" :key="idx">
-            <template v-if="page === '…'">
-              <span class="pagination__ellipsis" aria-hidden="true">…</span>
-            </template>
-            <button
-              v-else
-              class="action-btn action-btn--text pagination__page"
-              :class="{ 'pagination__page--active': page === filters.page }"
-              @click="setPage(page)"
-            >{{ page }}</button>
-          </template>
-
-          <button
-            class="action-btn action-btn--text"
-            :disabled="!pagination.has_next"
-            @click="setPage(pagination.page + 1)"
-            title="Следующая страница"
-          >
-            ›
-          </button>
-        </nav>
-
-        <div class="pagination__total">
-          Всего: {{ pagination.total }}
-        </div>
-      </div>
     </template>
 
     <!-- Delete confirmation -->
@@ -406,14 +369,14 @@ onBeforeUnmount(() => {
 .filters {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--size-2);
   flex-wrap: wrap;
 }
 
 .filter {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  /* gap: 0.5rem; */
 }
 
 .filters__group {
@@ -541,6 +504,7 @@ onBeforeUnmount(() => {
   transition: var(--transition-smooth);
 }
 
+.pagination__btn:hover,
 .action-btn:hover {
   color: var(--color-primary);
 }
@@ -585,62 +549,5 @@ onBeforeUnmount(() => {
   @media (width < 768px) {
     grid-template-columns: auto;
   }
-}
-
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.pagination__rows-per-page {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.pagination__label {
-  font-size: 0.875rem;
-  color: var(--color-muted-foreground);
-}
-
-.pagination__rows-per-page select {
-  padding: 4px 8px;
-  border: 1px solid var(--color-input);
-  border-radius: var(--radius);
-  background: var(--color-background);
-  color: inherit;
-  font-size: 0.875rem;
-  cursor: pointer;
-}
-
-.pagination__pages {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.pagination__page--active {
-  color: var(--color-primary);
-  font-weight: 700;
-  pointer-events: none;
-}
-
-.pagination__ellipsis {
-  color: var(--color-muted-foreground);
-  padding: 0 2px;
-}
-
-.action-btn:disabled {
-  opacity: 0.4;
-  cursor: default;
-  pointer-events: none;
-}
-
-.pagination__total {
-  font-size: 0.875rem;
-  color: var(--color-muted-foreground);
 }
 </style>
