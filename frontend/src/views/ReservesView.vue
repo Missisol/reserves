@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { onBeforeUnmount, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 
@@ -41,35 +41,6 @@ const isOpenCategoryManage = ref(false)
 
 // Rows-per-page selector
 const perPageOptions = [1, 5, 10, 20, 50] as const
-
-// Page numbers to render in the pager (windowed around the current page)
-const visiblePages = computed(() => {
-  const total = pagination.value.pages
-  const current = pagination.value.page
-  if (total <= 0) return [] as (number | '…')[]
-
-  const delta = 1
-  const pages = new Set<number>()
-  for (let i = Math.max(1, current - delta); i <= Math.min(total, current + delta); i++) {
-    pages.add(i)
-  }
-  pages.add(1)
-  pages.add(total)
-
-  const sorted = [...pages].sort((a, b) => a - b)
-  const result: (number | '…')[] = []
-  for (let i = 0; i < sorted.length; i++) {
-    if (i > 0 && sorted[i] - sorted[i - 1] > 1) result.push('…')
-    result.push(sorted[i])
-  }
-  return result
-})
-
-/* const selectedCategoryName = computed(() => {
-  if (!filters.value.category_id) return ''
-  const cat = reserveCategories.value.find(c => c.id === filters.value.category_id)
-  return cat?.name || ''
-}) */
 
 // Sorting state
 const activeSortField = ref<ReserveSortField | ''>('')
