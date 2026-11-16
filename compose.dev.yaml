@@ -1,0 +1,54 @@
+name: reserves-dev
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend:/app
+      - ./backend/logs:/app/logs
+      - ${DB_PATH}:${DB_PATH}
+    expose:
+      - "5000"
+    networks:
+      - app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    develop:
+      watch:
+      - action: sync
+        path: ./frontend
+        target: /app
+        initial_sync: true
+        ignore:
+          - node_modules/
+          - package.json
+          - pnpm-lock.yaml
+      - action: rebuild
+        path: ./frontend/package.json
+      - action: rebuild
+        path: ./frontend/pnpm-lock.yaml
+    volumes:
+      - ./frontend:/app
+      - frontend-modules:/app/node_modules
+    env_file:
+      - ./.env.dev
+    ports:
+      - "5174:5174"
+    expose:
+      - "5174"
+    depends_on:
+      - backend
+    networks:
+      - app
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  frontend-modules:
