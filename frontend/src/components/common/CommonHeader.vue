@@ -6,7 +6,6 @@ import IconSun from '../icons/IconSun.vue'
 import IconMoon from '../icons/IconMoon.vue'
 import IconSystem from '../icons/IconSystem.vue'
 import IconLogoSpoon from '../icons/IconLogoSpoon.vue'
-import IconLogo from '../icons/IconLogo.vue'
 import { themes } from '@/utils/commonData'
 import type { ThemeValue } from '@/@types/common'
 
