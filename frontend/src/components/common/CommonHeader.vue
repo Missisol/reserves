@@ -5,7 +5,8 @@ import type { Component } from 'vue'
 import IconSun from '../icons/IconSun.vue'
 import IconMoon from '../icons/IconMoon.vue'
 import IconSystem from '../icons/IconSystem.vue'
-import IconSprout from '../icons/IconSprout.vue'
+import IconLogoSpoon from '../icons/IconLogoSpoon.vue'
+import IconLogo from '../icons/IconLogo.vue'
 import { themes } from '@/utils/commonData'
 import type { ThemeValue } from '@/@types/common'
 
@@ -75,7 +76,7 @@ onBeforeUnmount(() => {
           aria-label="Logo"
         >
           <div class="logo">
-            <IconSprout />
+            <IconLogoSpoon />
           </div>
           <span 
             class="logo__text"
@@ -157,17 +158,14 @@ onBeforeUnmount(() => {
   font-weight: bold;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 0.75rem;
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-glow);
-  color: var(--color-background);
-  background: var(--gradient-primary);
+  color: var(--color-foreground);
+  /* background: var(--gradient-primary); */
 }
 
 .logo>svg {
   width: 2rem;
   height: 2rem;
-  color: var(--color-background);
+  /* color: var(--color-background); */
 }
 
 .logo__text {
@@ -178,10 +176,6 @@ onBeforeUnmount(() => {
   color: transparent;
   background-clip: text;
   background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-
-  @media (width < 768px) {
-    display: none;
-  }
 }
 
 .header__right {
