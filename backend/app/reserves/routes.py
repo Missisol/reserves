@@ -28,9 +28,11 @@ def create_reserve_category():
     if not data or not data.get('name', '').strip():
         return jsonify({'error': 'Name is required'}), 400
 
-    name = data['name'].strip()
+    # Регистр не значим: модель хранит имя в нижнем регистре,
+    # поэтому и поиск дубликата идёт по нормализованному значению.
+    name = _normalize_name(data['name'])
     if ReserveCategory.query.filter_by(name=name).first():
-        return jsonify({'error': 'Category with this name already exists'}), 409
+        return jsonify({'error': 'Категория с этим именем уже существует'}), 409
 
     category = ReserveCategory(name=name)
     try:
@@ -57,13 +59,13 @@ def manage_reserve_category(id):
 
     # Update name
     if 'name' in data and data['name']:
-        new_name = data['name'].strip()
+        new_name = _normalize_name(data['name'])
         existing = ReserveCategory.query.filter(
             ReserveCategory.name == new_name,
             ReserveCategory.id != id
         ).first()
         if existing:
-            return jsonify({'error': 'Category with this name already exists'}), 409
+            return jsonify({'error': 'Категория с этим именем уже существует'}), 409
         category.name = new_name
 
     # Delete
@@ -352,3 +354,14 @@ def _parse_date(value):
         return date.fromisoformat(str(value))
     except (ValueError, TypeError):
         return None
+
+
+def _normalize_name(value):
+    """Normalize a category name the same way as ReserveCategory model does.
+
+    Used for uniqueness checks: the database stores names in lowercase,
+    so lookups must use the same form.
+    """
+    if isinstance(value, str):
+        return value.strip().lower()
+    return value

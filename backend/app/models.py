@@ -19,6 +19,14 @@ class ReserveCategory(db.Model):
         back_populates='category', passive_deletes=True
     )
 
+    # Нормализация имени категории: храним всегда в нижнем регистре,
+    # независимо от написания, введённого пользователем.
+    @so.validates('name')
+    def _normalize_name(self, key, value):
+        if isinstance(value, str):
+            value = value.strip().lower()
+        return value
+
     def __repr__(self):
         return f'<ReserveCategory {self.name}>'
 
@@ -61,6 +69,14 @@ class Reserve(db.Model):
     category: so.Mapped['ReserveCategory'] = so.relationship(
         back_populates='reserves'
     )
+
+    # Нормализация вида запаса: храним всегда в нижнем регистре,
+    # независимо от написания, введённого пользователем.
+    @so.validates('kind')
+    def _normalize_kind(self, key, value):
+        if isinstance(value, str):
+            value = value.strip().lower()
+        return value
 
     def __repr__(self):
         return f'<Reserve {self.kind}>'
