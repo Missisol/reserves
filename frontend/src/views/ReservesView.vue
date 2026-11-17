@@ -447,7 +447,7 @@ onBeforeUnmount(() => {
   display: inline-block;
   padding: 2px 10px;
   border-radius: 12px;
-  font-size: var(--font-size-12);
+  font-size: var(--font-size-14);
   font-weight: 600;
   background: var(--color-primary);
   color: var(--color-primary-foreground);
@@ -467,12 +467,13 @@ onBeforeUnmount(() => {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: var(--size);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-muted-foreground);
   transition: var(--transition-smooth);
+  min-width: var(--size-5);
 }
 
 .pagination__btn:hover,
@@ -481,7 +482,7 @@ onBeforeUnmount(() => {
 }
 
 .action-btn--text {
-  font-size: var(--font-size-12);
+  font-size: var(--font-size-14);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -491,8 +492,8 @@ onBeforeUnmount(() => {
 }
 
 .action-btn > svg {
-  width: 1rem;
-  height: 1rem;
+  width: var(--size-4);
+  height: var(--size-4);
 }
 
 .empty {
