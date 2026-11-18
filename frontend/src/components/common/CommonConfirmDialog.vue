@@ -99,7 +99,7 @@ function handleBackdropClick(e: Event): void {
 }
 
 .dialog__title {
-  font-size: var(--font-size-18);
+  font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 600;
   color: var(--color-destructive);
@@ -111,7 +111,7 @@ function handleBackdropClick(e: Event): void {
 }
 
 .dialog__message {
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.5rem;
   color: var(--color-foreground);
   margin: 0;
@@ -125,7 +125,7 @@ function handleBackdropClick(e: Event): void {
 }
 
 .dialog__button {
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
   border: none;

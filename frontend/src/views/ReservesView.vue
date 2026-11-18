@@ -340,7 +340,7 @@ onBeforeUnmount(() => {
 .filters {
   display: flex;
   flex-direction: column;
-  gap: var(--size-2);
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
@@ -368,7 +368,7 @@ onBeforeUnmount(() => {
   border: 1px solid var(--color-input);
   border-radius: 24px;
   padding: 4px 14px;
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -398,7 +398,7 @@ onBeforeUnmount(() => {
 .category-dropdown__item {
   padding: 0.5rem 1rem;
   cursor: pointer;
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
 }
 
 .category-dropdown__item--active {
@@ -422,10 +422,9 @@ onBeforeUnmount(() => {
 
 .table th,
 .table td {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   text-align: left;
   border: 1px solid var(--color-border);
-  font-size: var(--font-size-14);
 }
 
 .table th {
@@ -446,8 +445,7 @@ onBeforeUnmount(() => {
 .status-badge {
   display: inline-block;
   padding: 2px 10px;
-  border-radius: 12px;
-  font-size: var(--font-size-14);
+  border-radius: var(--radius);
   font-weight: 600;
   background: var(--color-primary);
   color: var(--color-primary-foreground);
@@ -460,20 +458,21 @@ onBeforeUnmount(() => {
 
 .actions {
   display: flex;
-  gap: 0.25rem;
+  justify-content: space-between;
+  /* gap: 0.5rem; */
 }
 
 .action-btn {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: var(--size);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-muted-foreground);
   transition: var(--transition-smooth);
-  min-width: var(--size-5);
+  min-width: 2.5rem;
+  height: 2.5rem;
 }
 
 .pagination__btn:hover,
@@ -482,7 +481,6 @@ onBeforeUnmount(() => {
 }
 
 .action-btn--text {
-  font-size: var(--font-size-14);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -492,15 +490,14 @@ onBeforeUnmount(() => {
 }
 
 .action-btn > svg {
-  width: var(--size-4);
-  height: var(--size-4);
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .empty {
   text-align: center;
   color: var(--color-muted-foreground);
   padding: 3rem;
-  font-size: var(--font-size-16);
 }
 
 .empty__link {

@@ -36,9 +36,9 @@ const emit = defineEmits<{
 
 <style scoped>
 .form {
-  /* --btn-color: var(--color-primary); */
+  --btn-color: var(--color-btn, var(--color-primary));
   --icon-color: var(--color-primary-foreground);
-  /* --label-color: var(--color-primary); */
+  --label-color: var(--color-primary);
 
   color: var(--color-foreground);
   background: var(--color-gradient-card);
@@ -48,7 +48,7 @@ const emit = defineEmits<{
 }
 
 .form__label {
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 600;
   color: var(--label-color, var(--color-primary));
@@ -61,7 +61,7 @@ const emit = defineEmits<{
 }
 
 .form__button {
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
   border: none;
@@ -78,7 +78,7 @@ const emit = defineEmits<{
 
 @media (hover: hover) and (pointer: fine) {
   .form__button:hover {
-    background: hsl(from var(--btn-color) h s l / 0.9);
+    background: hsl(from var(--btn-color, var(--color-primary)) h s l / 0.9);
   }
 }
 </style>

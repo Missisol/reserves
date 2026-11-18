@@ -123,9 +123,6 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .full-header {
-  /* position: sticky; */
-  top: 0px;
-  backdrop-filter: blur(4px);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -158,18 +155,16 @@ onBeforeUnmount(() => {
   width: 2.5rem;
   height: 2.5rem;
   color: var(--color-foreground);
-  /* background: var(--gradient-primary); */
 }
 
 .logo>svg {
   width: 2rem;
   height: 2rem;
-  /* color: var(--color-background); */
 }
 
 .logo__text {
   align-self: center;
-  font-size: var(--font-size-20);
+  font-size: 1.25rem;
   font-weight: 700;
   text-wrap: nowrap;
   color: transparent;
@@ -183,46 +178,13 @@ onBeforeUnmount(() => {
   height: 40px;
 }
 
-.nav {
-  display: flex;
-  gap: .25rem;
-  justify-content: center;
-  /* align-items: center; */
-
-  & a {
-    color: var(--color-muted-foreground);
-    font-weight: 500;
-    text-decoration: inherit;
-    padding: 0.5rem 1.5rem;
-    border-radius: var(--radius);
-    transition: var(--transition-smooth);
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    & a:hover {
-      color: var(--color-foreground);
-      background: var(--color-muted);
-    }
-  }
-
-  & a.router-link-exact-active:first-child {
-    color: var(--color-primary);
-    background-color: hsl(from var(--color-primary) h s l / 0.1);
-  }
-
-  & a.router-link-exact-active:last-child {
-    color: var(--color-primary);
-    background-color: hsl(from var(--color-primary) h s l / 0.1);
-  }
-}
-
 .header__theme {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 2.5rem;
   height: 100%;
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   font-weight: 500;
   background: var(--color-background);
   border: 1px solid var(--color-input);
@@ -234,11 +196,6 @@ onBeforeUnmount(() => {
 .header__theme:hover {
   color: var(--accent-foreground);
   background: var(--color-primary);
-}
-
-.header__theme>svg {
-  width: 16px;
-  height: 16px;
 }
 
 .theme-switcher {
@@ -255,8 +212,7 @@ onBeforeUnmount(() => {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   overflow: hidden;
-  z-index: 20;
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
@@ -273,14 +229,14 @@ onBeforeUnmount(() => {
 
 .theme-menu__item:hover ,
 .theme-menu__item.active {
-  /* background:var(--color-accent); */
   color: var(--color-accent-foreground);
   background:var(--color-primary);
 }
 
-.theme-menu__item > svg {
-  width: 16px;
-  height: 16px;
+.header__theme>svg,
+.theme-menu__item>svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 /* dropdown animation */

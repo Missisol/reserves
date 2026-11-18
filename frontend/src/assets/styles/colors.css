@@ -53,7 +53,7 @@
 
     --border: var(--white-3);
     --input: var(--white-3);
-    --outline: var(--orange-1);
+    --outline: var(--green-1);
 
 
     /* colors dark */
@@ -77,7 +77,7 @@
 
     --border-dark: var(--dark-6);
     --input-dark: var(--dark-6);
-    --outline-dark: var(--orange-1);
+    --outline-dark: var(--green-1);
     
     /* light-dark() */
     --color-background: light-dark(var(--background), var(--background-dark));

@@ -82,6 +82,7 @@ const router = useRouter()
     >Вид
       <input
         id="kind"
+        class="input"
         v-model="model.kind"
         type="text"
         placeholder="Например: крупа, картофель"
@@ -97,6 +98,7 @@ const router = useRouter()
     >Описание
       <textarea
         id="description"
+        class="input"
         v-model="model.description"
         rows="3"
       ></textarea>
@@ -108,6 +110,7 @@ const router = useRouter()
       >Количество
         <input
           id="quantity"
+          class="input"
           v-model.number="model.quantity"
           type="number"
           min="0"
@@ -124,6 +127,7 @@ const router = useRouter()
       >Единица
         <input
           id="unit"
+          class="input"
           v-model="model.unit"
           type="text"
           list="unit-options"
@@ -145,6 +149,7 @@ const router = useRouter()
       >Дата, до которой годен
         <input
           id="expiry_date"
+          class="input"
           :value="toInputDate(model.expiry_date)"
           type="date"
           @input="model.expiry_date = ($event.target as HTMLInputElement).value || null"
@@ -165,6 +170,7 @@ const router = useRouter()
       >Локация
         <input
           id="location"
+          class="input"
           v-model="model.location"
           type="text"
           placeholder="Например: кладовая"
@@ -176,6 +182,7 @@ const router = useRouter()
       >Место
         <input
           id="place"
+          class="input"
           v-model="model.place"
           type="text"
           placeholder="Например: полка 2"
@@ -205,6 +212,7 @@ const router = useRouter()
 
 <style scoped>
 .form {
+  --outline-color: var(--color-input);
   display: grid;
   gap: 1.5rem;
 }
@@ -221,7 +229,7 @@ const router = useRouter()
 
 .label {
   color: var(--color-primary);
-  font-size: var(--font-size-16);
+  font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 600;
   display: flex;
@@ -236,7 +244,7 @@ const router = useRouter()
 .label input,
 .label textarea,
 .label select {
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 400;
   color: var(--color-foreground);
@@ -252,7 +260,7 @@ const router = useRouter()
 }
 
 .label__error {
-  font-size: var(--font-size-12);
+  font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 400;
   color: var(--color-destructive);
@@ -261,7 +269,7 @@ const router = useRouter()
 .value--readonly {
   color: var(--color-foreground);
   font-weight: 400;
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
 }
 
 .checkbox {
@@ -269,7 +277,7 @@ const router = useRouter()
   align-items: center;
   gap: 0.5rem;
   color: var(--color-foreground);
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   cursor: pointer;
 }
 

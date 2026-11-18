@@ -44,7 +44,7 @@ export function getStatusLabel(isActive: boolean): string {
  * Return a short label for the toggle button.
  */
 export function getToggleLabel(isActive: boolean): string {
-  return isActive ? 'Использовано' : 'Вернуть'
+  return isActive ? 'На месте' : 'Изъято'
 }
 
 /**

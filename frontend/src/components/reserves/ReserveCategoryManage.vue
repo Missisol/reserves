@@ -92,6 +92,7 @@ function clearInput() {
     >
       Управление категорией
     </label>
+    <pre>{{ selectedCategoryName }}</pre>
     <div class="form__action">
       <div class="form__inputs">
         <CategorySelect
@@ -171,7 +172,7 @@ function clearInput() {
 }
 
 .form__label {
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 600;
   color: var(--label-color, var(--color-primary));
@@ -242,35 +243,3 @@ function clearInput() {
   --text-color: var(--color-primary-foreground);
 }
 </style>
-
-<!-- <style>
-.form__action .input {
-  flex-grow: 1;
-  font-size: var(--font-size-14);
-  line-height: 1.25rem;
-  color: var(--color-foreground);
-  background: hsl(from var(--color-background) h s l / 0.5);
-  border: 1px solid var(--color-input);
-  border-radius: calc(var(--radius) - 2px);
-  padding: 0.5rem 0.75rem;
-}
-
-.form__action .input:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.form__action .input::placeholder {
-  color: hsl(from var(--color-foreground) h s l / 0.6);
-}
-
-.form__action .input:focus-visible,
-.form__action .input:focus {
-  outline: 2px solid var(--color-ring);
-}
-
-.form__action .input:focus:not(:focus-visible) {
-  outline: none;
-}
-</style>
- -->

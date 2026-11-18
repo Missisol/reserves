@@ -4,17 +4,6 @@
   --radius: 0.75rem;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  --size: 4px;
-
-  --size-2: calc(var(--size) * 2); /* 8px */
-  --size-3: calc(var(--size) * 3); /* 12px */
-  --size-4: calc(var(--size) * 4); /* 16px */
-  --size-5: calc(var(--size) * 5); /* 20px */
-  --size-6: calc(var(--size) * 6); /* 24px */
-  --size-7: calc(var(--size) * 7); /* 28px */
-  --size-8: calc(var(--size) * 8); /* 32px */
-  --size-10: calc(var(--size) * 10); /* 40px */
-
   interpolate-size: allow-keywords;
 }
 
@@ -30,32 +19,28 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: var(--font-size-32);
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: var(--font-size-24);
+  font-size: 1.5rem;
 }
 
 h3 {
-  font-size: var(--font-size-20);
+  font-size: 1.25rem;
 }
 
 body {
   color: var(--color-foreground);
   background: var(--color-background);
   font-family: var(--font-text);
-  font-size: var(--font-size-14);
   font-optical-sizing: auto;
+  font-size: 1rem;
   font-weight: 400;
   font-synthesis: weight;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-
-  /* @media (width <= 1024px) {
-  } */
 }
 
 .container {
@@ -121,10 +106,10 @@ a.router__link {
 
 
 /* form style */
-.form__action .input {
-  --color-outline: var(--outline-color, var(--color-ring));
+.input {
+  --color-outline: var(--outline-color, var(--color-primary));
   flex-grow: 1;
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--color-foreground);
   background: hsl(from var(--color-background) h s l / 0.5);
@@ -142,12 +127,12 @@ a.router__link {
   height: 1rem;
 }
 
-.form__action>.input:focus-visible, 
-.form__action>.input:focus {
+.input:focus-visible, 
+.input:focus {
   outline: 2px solid var(--color-outline);
 }
 
-.form__action>.input:focus:not(:focus-visible) {
+.input:focus:not(:focus-visible) {
   outline: none;
 }
 

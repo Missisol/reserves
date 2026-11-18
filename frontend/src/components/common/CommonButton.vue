@@ -31,11 +31,12 @@ const emit = defineEmits(['buttonAction'])
   justify-content: center;
   align-items: center;
   gap: .5rem;
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.5rem;
   font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
+  user-select: none;
   transition: var(--transition-smooth);
 
   padding-block: var(--btn-padding-block, 0.5rem);

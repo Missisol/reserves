@@ -79,8 +79,8 @@ const visiblePages = computed(() => {
         </template>
         <button
           v-else
-          class="pagination__btn pagination__page"
-          :class="{ 'pagination__page--active': page === filters.page }"
+          class="pagination__btn"
+          :class="{ 'pagination__btn--active': page === filters.page }"
           @click="emit('setPage', page)"
         >{{ page }}</button>
       </template>
@@ -103,24 +103,21 @@ const visiblePages = computed(() => {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: var(--size-2);
+  gap: 0.5rem;
 }
 
 .pagination__controls {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  color: var(--color-muted-foreground);
+  font-size: 0.875rem;
 }
 
 .pagination__rows-per-page {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-}
-
-.pagination__label {
-  font-size: var(--font-size-14);
-  color: var(--color-muted-foreground);
+  gap: 0.5rem;
 }
 
 .pagination__rows-per-page select {
@@ -129,27 +126,25 @@ const visiblePages = computed(() => {
   border-radius: var(--radius);
   background: var(--color-background);
   color: inherit;
-  font-size: var(--font-size-14);
   cursor: pointer;
 }
 
 .pagination__pages {
   display: flex;
   align-items: center;
-  gap: var(--size-3);
+  gap: 0.75rem;
 }
 
-.pagination__btn,
-.pagination__page {
+.pagination__btn {
   background: var(--color-background);
   border: 1px solid var(--cbtn-border, var(--color-primary));
   border-radius: calc(var(--radius) - 2px);
-  padding-block: var(--size-2);
-  padding-inline: var(--size-3);
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: var(--font-size-14);
+  font-size: 0.875rem;
   line-height: 1.5rem;
   font-weight: 500;
   white-space: nowrap;
@@ -158,10 +153,10 @@ const visiblePages = computed(() => {
 
 .pagination__btn--text {
   border: none;
-  font-size: var(--font-size-24);
+  font-size: 1.5rem;
 }
 
-.pagination__page--active {
+.pagination__btn--active {
   color: var(--color-primary-foreground);
   background: var(--cbtn-background, var(--color-primary));
   font-weight: 700;
@@ -170,7 +165,7 @@ const visiblePages = computed(() => {
 
 .pagination__ellipsis {
   color: var(--color-muted-foreground);
-  padding: 0 2px;
+  padding-inline: 2px;
 }
 
 .pagination__btn:disabled,
@@ -180,9 +175,6 @@ const visiblePages = computed(() => {
 }
 
 .pagination__total {
-  font-size: var(--font-size-14);
-  color: var(--color-muted-foreground);
   align-self: center;
 }
-
 </style>
